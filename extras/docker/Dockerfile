@@ -1,7 +1,8 @@
 #FROM ubuntu:16.04
 #FROM resin/rpi-raspbian:stretch
+FROM resin/rpi-raspbian
 #FROM thelimeburner/tensorflow_armv7l:0.3
-FROM thelimeburner/ies-ubuntu
+#FROM thelimeburner/ies-ubuntu
 
 # Install necessary packages for the installer
 RUN apt-get update && apt-get install -y \
