@@ -1,6 +1,6 @@
 #FROM ubuntu:16.04
 #FROM resin/rpi-raspbian:stretch
-FROM resin/rpi-raspbian
+FROM resin/rpi-raspbian:stretch
 #FROM thelimeburner/tensorflow_armv7l:0.3
 #FROM thelimeburner/ies-ubuntu
 
