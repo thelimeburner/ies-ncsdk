@@ -6,7 +6,7 @@ script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-- docker build -t thelimeburner/ies-ncsdk-armv7l .
+- docker build -t thelimeburner/ies-ncsdk-armv7l -f ./extras/docker/Dockerfile .
 # test image
 - docker run thelimeburner/ies-ncsdk-armv7l uname -a
 # push image
