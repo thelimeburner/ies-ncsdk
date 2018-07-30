@@ -1,0 +1,20 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t thelimeburner/ies-ncsdk-armv7l .
+# test image
+- docker run thelimeburner/ies-ncsdk-armv7l uname -a
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    TAG=0.1
+    docker tag thelimeburner/ies-ncsdk-armv7l thelimeburner/ies-ncsdk-armv7l:$TAG
+    docker push thelimeburner/ies-ncsdk-armv7l:$TAG
+    docker push thelimeburner/ies-ncsdk-armv7l
+  fi
